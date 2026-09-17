@@ -15,8 +15,9 @@
     --max:    1120px;
     --radius: 14px;
 
-    /* Pilha de fontes do sistema — usa a San Francisco (SF Pro) nos aparelhos Apple */
-    --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", "Segoe UI", Roboto, Arial, sans-serif;
+    /* Inter — alternativa livre parecida com a San Francisco (SF Pro) da Apple */
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+    --font-display: var(--font-body);
 }
 
 * { box-sizing: border-box; }
@@ -27,7 +28,7 @@ body {
     margin: 0;
     background-color: var(--bg);
     color: var(--text);
-    font-family: var(--font-sans);
+    font-family: var(--font-body);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
 }
@@ -43,7 +44,7 @@ img { max-width: 100%; display: block; }
 
 /* ---------- Tipografia ---------- */
 h1, h2, h3 {
-    font-family: var(--font-sans);
+    font-family: var(--font-display);
     letter-spacing: -0.02em;
     line-height: 1.08;
     margin: 0;
@@ -237,7 +238,7 @@ h1, h2, h3 {
     justify-content: space-between;
 }
 .app-brand {
-    font-family: var(--font-sans);
+    font-family: var(--font-display);
     font-weight: 700;
     font-size: 16px;
     color: var(--text);
@@ -389,7 +390,7 @@ h1, h2, h3 {
     transform: translateY(-4px);
 }
 .stat-number {
-    font-family: var(--font-sans);
+    font-family: var(--font-display);
     font-size: 36px;
     font-weight: 700;
     color: var(--red-bright);
@@ -456,7 +457,7 @@ h1, h2, h3 {
 }
 .fase-card:hover { border-color: var(--red-bright); background: rgba(225, 58, 58, 0.24); transform: translateY(-5px); }
 .fase-top { display: flex; align-items: center; gap: 10px; margin-bottom: 42px; }
-.fase-number { color: #fff; font-family: var(--font-sans); font-size: 25px; font-weight: 700; line-height: 1; }
+.fase-number { color: #fff; font-family: var(--font-display); font-size: 25px; font-weight: 700; line-height: 1; }
 .fase-periodo { color: rgba(255, 255, 255, 0.7); font-size: 11px; line-height: 1.2; text-transform: uppercase; }
 .fase-card h3 { font-size: 20px; margin-bottom: 14px; color: #fff; }
 .fase-card p { color: rgba(255, 255, 255, 0.82); font-size: 14px; line-height: 1.5; margin: auto 0 0; }
