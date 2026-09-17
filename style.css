@@ -286,27 +286,30 @@ h1, h2, h3 {
 .app-section { scroll-margin-top: 90px; }
 .app-grid {
     display: grid;
-    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr) auto;
     gap: 56px;
     align-items: center;
 }
-.app-visual { display: flex; justify-content: center; }
+.app-visual { order: 2; display: flex; align-items: center; justify-content: center; }
+.app-shot { height: 440px; width: auto; max-width: 100%; display: block; filter: drop-shadow(0 26px 55px rgba(0, 0, 0, 0.6)); }
 .app-features {
+    order: 1;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 14px;
+    align-content: center;
 }
 .app-feature {
-    background: var(--bg-elev);
-    border: 1px solid var(--border);
+    background: rgba(225, 58, 58, 0.15);
+    border: 1px solid rgba(225, 58, 58, 0.5);
     border-radius: 10px;
     padding: 18px 20px;
-    transition: border-color 0.25s ease, transform 0.25s ease;
+    transition: border-color 0.25s ease, transform 0.25s ease, background 0.25s ease;
 }
 .app-feature:last-child { grid-column: 1 / -1; }
-.app-feature:hover { border-color: var(--border-strong); transform: translateY(-3px); }
-.app-feature h3 { font-size: 16px; margin-bottom: 6px; }
-.app-feature p { color: var(--text-muted); font-size: 13px; line-height: 1.5; margin: 0; }
+.app-feature:hover { border-color: var(--red-bright); background: rgba(225, 58, 58, 0.24); transform: translateY(-3px); }
+.app-feature h3 { font-size: 16px; margin-bottom: 6px; color: #fff; }
+.app-feature p { color: rgba(255, 255, 255, 0.82); font-size: 13px; line-height: 1.5; margin: 0; }
 
 /* ---------- Painel tático (texto + imagem) ---------- */
 .painel-grid {
@@ -436,53 +439,25 @@ h1, h2, h3 {
     gap: 14px;
     position: relative;
 }
-.fases-grid::before {
-    content: "";
-    position: absolute;
-    top: 24px;
-    left: 8%;
-    right: 8%;
-    height: 1px;
-    background: rgba(255, 255, 255, 0.16);
-}
 .fase-card {
     min-height: 280px;
     padding: 22px 20px 24px;
-    background: var(--bg-elev);
-    border: 1px solid var(--border);
-    border-top: 3px solid var(--fase-color, var(--red));
+    background: rgba(225, 58, 58, 0.15);
+    border: 1px solid rgba(225, 58, 58, 0.5);
     border-radius: 12px;
     position: relative;
     z-index: 1;
     display: flex;
     flex-direction: column;
-    transition: transform 0.25s ease, border-color 0.25s ease;
+    transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
 }
-.fase-card::after {
-    content: "";
-    position: absolute;
-    top: 18px;
-    right: -11px;
-    width: 20px;
-    height: 20px;
-    background: var(--bg-elev);
-    border-top: 1px solid var(--border-strong);
-    border-right: 1px solid var(--border-strong);
-    transform: rotate(45deg);
-    z-index: -1;
-}
-.fase-card:last-child::after { display: none; }
-.fase-card:hover { border-color: var(--fase-color, var(--red)); transform: translateY(-5px); }
-.fase-1 { --fase-color: #aebcca; }
-.fase-2 { --fase-color: #7f9db2; }
-.fase-3 { --fase-color: #5f88a4; }
-.fase-4 { --fase-color: #3f6f8f; }
+.fase-card:hover { border-color: var(--red-bright); background: rgba(225, 58, 58, 0.24); transform: translateY(-5px); }
 .fase-top { display: flex; align-items: center; gap: 10px; margin-bottom: 42px; }
-.fase-number { color: var(--fase-color); font-family: 'Space Grotesk', sans-serif; font-size: 25px; font-weight: 700; line-height: 1; }
-.fase-periodo { color: var(--text-muted); font-size: 11px; line-height: 1.2; text-transform: uppercase; }
-.fase-card h3 { font-size: 20px; margin-bottom: 14px; }
-.fase-card p { color: var(--text-muted); font-size: 14px; line-height: 1.5; margin: auto 0 0; }
-.fase-card strong { color: var(--text); }
+.fase-number { color: #fff; font-family: 'Space Grotesk', sans-serif; font-size: 25px; font-weight: 700; line-height: 1; }
+.fase-periodo { color: rgba(255, 255, 255, 0.7); font-size: 11px; line-height: 1.2; text-transform: uppercase; }
+.fase-card h3 { font-size: 20px; margin-bottom: 14px; color: #fff; }
+.fase-card p { color: rgba(255, 255, 255, 0.82); font-size: 14px; line-height: 1.5; margin: auto 0 0; }
+.fase-card strong { color: #fff; }
 
 /* ---------- Equipe ---------- */
 .equipe-section { background: var(--bg-alt); scroll-margin-top: 90px; }
@@ -496,33 +471,22 @@ h1, h2, h3 {
     padding: 18px;
     display: flex;
     align-items: center;
+    justify-content: center;
+    text-align: center;
     gap: 14px;
     min-width: 0;
     transition: border-color 0.25s ease, transform 0.25s ease;
 }
 .person-card:hover { border-color: var(--border-strong); transform: translateY(-4px); }
-.person-card img {
-    width: 68px;
-    height: 68px;
-    flex: 0 0 68px;
-    object-fit: cover;
-    object-position: top center;
-    border-radius: 50%;
-    background: var(--bg);
-}
 .person-role { color: var(--red-bright); display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; line-height: 1.25; text-transform: uppercase; }
 .person-card h3 { font-size: 17px; margin-top: 5px; }
 .person-orientador { max-width: 430px; margin: 0 auto; justify-content: center; }
-.person-orientador img { width: 82px; height: 82px; flex-basis: 82px; }
 .person-orientador h3 { font-size: 22px; }
-.tree-connector { width: 1px; height: 28px; margin: 0 auto; background: var(--border-strong); position: relative; }
-.tree-connector::after { content: ""; width: 7px; height: 7px; background: var(--red); border-radius: 50%; position: absolute; left: -3px; bottom: -3px; }
-.leadership-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; max-width: 720px; margin: 0 auto; }
-.tree-connector-wide { height: 30px; }
-.members-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
-.members-grid .person-card { flex-direction: column; align-items: center; text-align: center; min-height: 185px; justify-content: center; }
+.leadership-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; max-width: 720px; margin: 24px auto 0; }
+.members-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 18px; }
+.members-grid .person-card { flex-direction: column; align-items: center; text-align: center; min-height: 120px; justify-content: center; }
 .members-grid .person-card h3 { font-size: 16px; }
-.members-grid .person-card img { width: 76px; height: 76px; flex-basis: 76px; }
+.members-grid .person-card:last-child { grid-column: 1 / -1; justify-self: center; width: calc((100% - 28px) / 3); }
 
 /* ---------- Solução / features ---------- */
 .features {
@@ -570,16 +534,17 @@ h1, h2, h3 {
     .smart-list { grid-template-columns: 1fr; }
     .smart-card:last-child { grid-column: auto; }
     .fases-grid { grid-template-columns: 1fr 1fr; }
-    .fases-grid::before { display: none; }
-    .fase-card::after { display: none; }
     .fase-top { margin-bottom: 28px; }
     .members-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .members-grid .person-card { min-height: 0; }
+    .members-grid .person-card:last-child { width: calc((100% - 14px) / 2); }
     .hero { padding: 90px 24px 80px; }
     .section { padding: 72px 0; }
     .solucao-grid { grid-template-columns: 1fr; gap: 36px; }
-    .app-grid { grid-template-columns: 1fr; gap: 40px; justify-items: center; }
-    .app-features { grid-template-columns: 1fr; width: 100%; }
+    .app-grid { grid-template-columns: 1fr; gap: 40px; justify-items: center; align-items: center; }
+    .app-features { grid-template-columns: 1fr; width: 100%; order: 2; }
+    .app-visual { order: 1; }
+    .app-shot { height: auto; width: 280px; }
     .app-feature:last-child { grid-column: auto; }
     .painel-grid { grid-template-columns: 1fr; gap: 36px; }
     .painel-visual { order: -1; }
@@ -590,5 +555,5 @@ h1, h2, h3 {
     .fase-card { min-height: 0; }
     .leadership-grid, .members-grid { grid-template-columns: 1fr; }
     .person-card, .members-grid .person-card { flex-direction: row; text-align: left; justify-content: flex-start; min-height: 0; }
-    .members-grid .person-card img { width: 68px; height: 68px; flex-basis: 68px; }
+    .members-grid .person-card:last-child { grid-column: auto; justify-self: stretch; width: auto; }
 }
